@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Reci-Peacee</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="/css/my-styles.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1 class="home"><a href="/" class="no-dec">Reci-Peace</a></h1>
+  </header>
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <h1 class="title"><%= @details[0]["recipe_name"] %></h1>
+      <h1 class="label">Description:</h1>
+      <h3 class="section"><%= @details[0]["description"] %></h3>
+      <h1 class="label">Ingredients:</h1>
+      <div class="section">
+        <% @details.each do |detail| %>
+            <li class="ingredient"><%= detail["ingredient_name"] %></li>
+        <% end %>
+      </div>
+      <h1 class="label">Directions:</h1>
+      <div class="section">
+        <h3><%= @details[0]["instructions"] %></h3>
+      </div>
+    </div>
+    <div class="col-md-2 col-md-offset-5">
+      <button class="button"><a href="/recipes" class="no-dec">Back</a></button>
+    </div>
+  </div>
+
+</body>
+</html>

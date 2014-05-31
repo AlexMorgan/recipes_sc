@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title>Reci-Peacee</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="css/my-styles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+      <h1 class="home"><a href="/" class="no-dec">Reci-Peace</a></h1>
+    </header>
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="title">Recipes:</h1>
+      <% @recipes.each do |recipe| %>
+        <button class="button">
+          <a class="no-dec" href="/recipes/<%=recipe["id"]%>"><p class="recipe"><%= recipe["name"] %></p></a>
+        </button>
+      <% end %>
+    </div>
+    <% if params[:page] == nil || params[:page].to_i == 0 %>
+      <div class="col-md-2 col-md-offset-5">
+        <button class="button">
+          <a class="no-dec" href="/recipes?page=<%= @page + 1%>">Next</a>
+        </button>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+          <button class="button">
+            <a class="no-dec" href="/recipes?page=<%= @page - 1%>">Prev</a>
+          </button>
+        </div>
+        <div class="col-md-2">
+          <button class="button">
+            <a class="no-dec" href="/recipes?page=<%= @page + 1%>">Next</a>
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
