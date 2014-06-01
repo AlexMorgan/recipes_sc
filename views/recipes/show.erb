@@ -20,18 +20,22 @@
   <div class="container">
     <div class="col-md-10 col-md-offset-1">
       <h1 class="title"><%= @details[0]["recipe_name"] %></h1>
-      <h1 class="label">Description:</h1>
-      <h3 class="section"><%= @details[0]["description"] %></h3>
+      <% if @details[0]["description"] != nil %>
+        <h1 class="label">Description:</h1>
+        <h3 class="section"><%= @details[0]["description"] %></h3>
+      <% end %>
       <h1 class="label">Ingredients:</h1>
       <div class="section">
         <% @details.each do |detail| %>
             <li class="ingredient"><%= detail["ingredient_name"] %></li>
         <% end %>
       </div>
-      <h1 class="label">Directions:</h1>
-      <div class="section">
-        <h3><%= @details[0]["instructions"] %></h3>
-      </div>
+      <% if @details[0]["instructions"] != nil %>
+        <h1 class="label">Instructions:</h1>
+        <div class="section">
+          <h3><%= @details[0]["instructions"] %></h3>
+        </div>
+      <% end %>
     </div>
     <div class="col-md-2 col-md-offset-5">
       <button class="button"><a href="/recipes" class="no-dec">Back</a></button>
